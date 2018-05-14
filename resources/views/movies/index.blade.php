@@ -6,7 +6,10 @@
             <h1>Staff Picks</h1>
             <ul class="col-md-12 text-left">
                 @foreach($movies as $movie)
-                    <li>{{ $movie->title }}, released in {{ $movie->year }}</li>
+                    <li>
+                        {{ title_case($movie->title) }},
+                        released in {{ $movie->year }}
+                    </li>
                     <hr>
                 @endforeach
             </ul>
