@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Movie;
+use App\Http\Resources\Movie as MovieResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/movies', function () {
+    return new MovieResource(Movie::all());
+    // If you want the return to be ordered by descending.
+    // return new MovieResource(Movie::orderByDesc('year')->get());
 });
