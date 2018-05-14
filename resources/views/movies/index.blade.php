@@ -9,6 +9,9 @@
                     <li>
                         {{ title_case($movie->title) }},
                         released in {{ $movie->year }}
+                        @if($movie->yearsSince($movie->year) > 0)
+                            ({{ $movie->determineMessage($movie->year) }})
+                        @endif
                     </li>
                     <hr>
                 @endforeach
